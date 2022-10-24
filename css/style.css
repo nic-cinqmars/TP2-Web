@@ -1,0 +1,85 @@
+html, body {
+    margin : 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(../img/background.svg);
+    background-color: #211A1D;
+    background-size: cover;
+    color: #F8F0FB;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+
+body .table-container {
+    margin: 100px auto;
+    width: 900px;
+    height: auto;
+}
+
+body .table-container h1 {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+body .table-container table {
+    width: 100%;
+    border: 5px groove #8075FF;
+}
+
+.modify-button, #add-button {
+    color: inherit;
+    font-size: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+th 
+{
+    height: 50px;
+}
+
+body .table-container table thead tr th, 
+body .table-container table tfoot tr th {
+    border: 2px solid;
+    border-color: #6320EE;
+    height: 60px;
+}
+
+body .table-container table thead > tr th {
+    width: 50px;
+}
+
+body .table-container table thead tr .column-name-button {
+    cursor: pointer;
+}
+
+body .table-container table thead tr th .hidden {
+    display: none;
+}
+
+body .table-container table tfoot tr th input {
+    border: 2px solid;
+    border-color: #6320EE;
+    color: #6320EE;
+}
+
+body .table-container table thead tr th,
+body .table-container table tfoot tr th {
+    background-color: #F8F0FB;
+    color: #6320EE;
+}
+
+body .table-container table tbody tr:nth-child(2n + 1) th {
+    background-color: #6320EE;
+}
+
+body .table-container table tbody tr:nth-child(2n) {
+    background-color: #8075FF;
+}
+
