@@ -7,22 +7,44 @@ let tfootRow;
 let indexToSortFrom = 0;
 let baseRowCopy;
 
+let currentModifyRow;
+let modifiedRowOldValues;
+
 window.onload = main;
 
 function changeClicked(event) {
+    let row = event.currentTarget.closest("tr");
+    modifiedRowOldValues = [];
+    let rowModifiableColumns = row.querySelectorAll("th input");
+    rowModifiableColumns.forEach(modifiableColumn => {
+        modifiedRowOldValues.push(modifiableColumn.value);
+    });
+    cancelRowModify(row);
 }
 
 function cancelClicked(event) {
-    let modifyButton = event.currentTarget.closest("th").querySelector(".modify-button");
-    let modifyRowContainer = event.currentTarget.parentNode;
+    let row = event.currentTarget.closest("tr");
+    currentModifyRow = undefined;
+    cancelRowModify(row);
+}
+
+function cancelRowModify(row) {
+    let modifyButton = row.querySelector("th .modify-button");
+    let modifyRowContainer = row.querySelector("th .row-edit-container");
     modifyButton.className = modifyButton.className.split(" ")[0];
     modifyRowContainer.className += " hidden";
 
-    let rowModifiableColumns = event.currentTarget.closest("tr").querySelectorAll("th input");
-    rowModifiableColumns.forEach(modifiableColumn => {
+    let rowModifiableColumns = row.querySelectorAll("th input");
+    for (let i = 0; i < rowModifiableColumns.length; i++)
+    {
+        let modifiableColumn = rowModifiableColumns[i];
         modifiableColumn.className = "no-show";
         modifiableColumn.setAttribute("readonly", "");
-    })
+        modifiableColumn.value = modifiedRowOldValues[i];
+    }
+
+    modifiedRowOldValues = [];
+    currentModifyRow = undefined;
 }
 
 function removeClicked(event) {
@@ -33,12 +55,21 @@ function removeClicked(event) {
 
 function modifyClicked(event) {
     let row = event.currentTarget.parentNode;
+    if (currentModifyRow === undefined)
+    {
+        currentModifyRow = row.parentNode;
+    }
+    else if (currentModifyRow !== row.parentNode) {
+        cancelRowModify(currentModifyRow);
+        currentModifyRow = row.parentNode;
+    }
     event.currentTarget.className += " hidden";
     let modifyRowContainer = row.querySelector(".row-edit-container");
     modifyRowContainer.className = modifyRowContainer.className.split(" ")[0];
 
     let rowModifiableColumns = row.parentNode.querySelectorAll("th input");
     rowModifiableColumns.forEach(modifiableColumn => {
+        modifiedRowOldValues.push(modifiableColumn.value);
         modifiableColumn.className = "";
         modifiableColumn.removeAttribute("readonly");
     })
@@ -58,6 +89,9 @@ function main()
     document.querySelectorAll("table tbody tr th .modify-button").forEach(btn => addRowEditorListeners(btn.parentNode));
 
     document.querySelector("#add-button").addEventListener("click", clickedAdd, false);
+
+    currentModifyRow = undefined;
+    modifiedRowOldValues = [];
 }
 
 function addRowEditorListeners(element)
@@ -194,7 +228,6 @@ function getNewID() {
             if (ids[i] - ids[i-1] > 1)
             {
                 newId = ids[i-1] + 1;
-                console.debug(newId);
                 break;
             }
         }
@@ -202,7 +235,6 @@ function getNewID() {
     if (newId === -1)
     {
         newId = ids[ids.length - 1] + 1;
-        console.debug(newId);
     }
 
     tfootRow[0].innerText = newId;
