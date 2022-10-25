@@ -13,7 +13,7 @@ let currentModifyRow;
 let modifiedRowOldValues;
 
 window.onload = initialize;
-
+//
 function initialize()
 {
     theadCells = document.querySelectorAll("table thead tr .column-name-button");
