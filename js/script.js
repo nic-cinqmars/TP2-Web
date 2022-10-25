@@ -5,8 +5,44 @@ let columnNames;
 let tbody;
 let tfootRow;
 let indexToSortFrom = 0;
+let baseRowCopy;
 
 window.onload = main;
+
+function changeClicked(event) {
+}
+
+function cancelClicked(event) {
+    let modifyButton = event.currentTarget.closest("th").querySelector(".modify-button");
+    let modifyRowContainer = event.currentTarget.parentNode;
+    modifyButton.className = modifyButton.className.split(" ")[0];
+    modifyRowContainer.className += " hidden";
+
+    let rowModifiableColumns = event.currentTarget.closest("tr").querySelectorAll("th input");
+    rowModifiableColumns.forEach(modifiableColumn => {
+        modifiableColumn.className = "no-show";
+        modifiableColumn.setAttribute("readonly", "");
+    })
+}
+
+function removeClicked(event) {
+    let row = event.currentTarget.closest("tr");
+    tbody.removeChild(row);
+    getNewID();
+}
+
+function modifyClicked(event) {
+    let row = event.currentTarget.parentNode;
+    event.currentTarget.className += " hidden";
+    let modifyRowContainer = row.querySelector(".row-edit-container");
+    modifyRowContainer.className = modifyRowContainer.className.split(" ")[0];
+
+    let rowModifiableColumns = row.parentNode.querySelectorAll("th input");
+    rowModifiableColumns.forEach(modifiableColumn => {
+        modifiableColumn.className = "";
+        modifiableColumn.removeAttribute("readonly");
+    })
+}
 
 function main()
 {
@@ -14,10 +50,22 @@ function main()
     columnNames.forEach(btn => btn.addEventListener("click", clickedColumn, false));
 
     tbody = document.querySelector("table tbody");
+    baseRowCopy = tbody.rows[0].cloneNode(true);
     tfootRow = document.querySelector("table tfoot").children[0].children;
-    tfootRow[0].innerText = parseInt(tbody.lastElementChild.children[0].innerText) + 1;
+
+    getNewID();
+
+    document.querySelectorAll("table tbody tr th .modify-button").forEach(btn => addRowEditorListeners(btn.parentNode));
 
     document.querySelector("#add-button").addEventListener("click", clickedAdd, false);
+}
+
+function addRowEditorListeners(element)
+{
+    element.querySelector(".modify-button").addEventListener("click", modifyClicked, false);
+    element.querySelector(".row-edit-container .change-button").addEventListener("click", changeClicked, false);
+    element.querySelector(".row-edit-container .cancel-button").addEventListener("click", cancelClicked, false);
+    element.querySelector(".row-edit-container .remove-button").addEventListener("click", removeClicked, false);
 }
 
 function clickedColumn(event)
@@ -58,10 +106,12 @@ function sortRows()
     {
         case upIcon:
             columnBodyRows.sort((a, b) => {
-                let element1 = a.children[indexToSortFrom].innerText;
-                let element2 = b.children[indexToSortFrom].innerText;
+                let element1 = a.children[indexToSortFrom].innerHTML;
+                let element2 = b.children[indexToSortFrom].innerHTML;
                 if (isNaN(element1))
                 {
+                    element1 = a.children[indexToSortFrom].children[0].value;
+                    element2 = b.children[indexToSortFrom].children[0].value;
                     return element2.localeCompare(element1);
                 }
                 else
@@ -72,10 +122,12 @@ function sortRows()
             break;
         case downIcon:
             columnBodyRows.sort((a, b) => {
-                let element1 = a.children[indexToSortFrom].innerText;
-                let element2 = b.children[indexToSortFrom].innerText;
+                let element1 = a.children[indexToSortFrom].innerHTML;
+                let element2 = b.children[indexToSortFrom].innerHTML;
                 if (isNaN(element1))
                 {
+                    element1 = a.children[indexToSortFrom].children[0].value;
+                    element2 = b.children[indexToSortFrom].children[0].value;
                     return element1.localeCompare(element2);
                 }
                 else
@@ -83,9 +135,6 @@ function sortRows()
                     return element1 - element2;
                 }
             });
-            break;
-        default:
-            console.debug("Error");
             break;
     }
 
@@ -103,24 +152,58 @@ function sortRows()
 }
 
 function clickedAdd() {
-    let newRow = tbody.lastElementChild.cloneNode(true);
-    console.debug(newRow);
-    console.debug(tfootRow);
+    let newRow = baseRowCopy.cloneNode(true);
 
     newRow.children[0].innerText = tfootRow[0].innerText;
     for (let i = 1; i < tfootRow.length - 1; i++)
     {
-        console.debug(tfootRow[i].value);
-        newRow.children[i].innerText = tfootRow[i].children[0].value;
+        let value = tfootRow[i].children[0].value;
+        if (value.length === 0)
+        {
+            value = tfootRow[i].children[0].getAttribute("placeholder");
+        }
+        newRow.children[i].innerText = value;
         tfootRow[i].children[0].value = "";
     }
 
     tbody.appendChild(newRow);
-    sortRows();
 
-    tfootRow[0].innerText = parseInt(tbody.lastElementChild.children[0].innerText) + 1;
+    addRowEditorListeners(newRow);
+    sortRows();
+    getNewID();
 }
 
 function getNewID() {
-    let columnBodyRows = Array.from(tbody.rows);
+    let bodyRows = Array.from(tbody.rows);
+    let ids = [];
+    bodyRows.forEach(row => {
+        ids.push(parseInt(row.children[0].innerText));
+    });
+
+    // Gets next empty id
+    ids.sort((a, b) => a - b);
+    let newId = -1;
+    if (ids[0] !== 1)
+    {
+        newId = 1;
+    }
+    else
+    {
+        for (let i = 1; i < ids.length - 1; i++)
+        {
+            if (ids[i] - ids[i-1] > 1)
+            {
+                newId = ids[i-1] + 1;
+                console.debug(newId);
+                break;
+            }
+        }
+    }
+    if (newId === -1)
+    {
+        newId = ids[ids.length - 1] + 1;
+        console.debug(newId);
+    }
+
+    tfootRow[0].innerText = newId;
 }

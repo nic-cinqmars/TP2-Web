@@ -39,6 +39,16 @@ body .table-container table {
     padding: 0;
 }
 
+.change-button, .cancel-button, .remove-button {
+    color: inherit;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
 th 
 {
     height: 50px;
@@ -59,7 +69,7 @@ body .table-container table thead tr .column-name-button {
     cursor: pointer;
 }
 
-body .table-container table thead tr th .hidden {
+.hidden {
     display: none;
 }
 
@@ -77,6 +87,21 @@ body .table-container table tfoot tr th {
 
 body .table-container table tbody tr:nth-child(2n + 1) th {
     background-color: #6320EE;
+}
+
+.table-container table tbody tr th .no-show {
+    outline: none;
+    border: none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    text-align: center;
 }
 
 body .table-container table tbody tr:nth-child(2n) {
