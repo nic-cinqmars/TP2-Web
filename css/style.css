@@ -12,24 +12,66 @@ body {
     font-size: 20px;
 }
 
+th
+{
+    height: 50px;
+}
+
+/* Used to hide sort icons on top of columns */
+.hidden {
+    display: none;
+}
+
 body .table-container {
     margin: 100px auto;
-    width: 900px;
+    width: 950px;
     height: auto;
 }
 
 body .table-container h1 {
-    text-align: center;
     font-weight: bold;
+    text-align: center;
     text-transform: uppercase;
 }
 
 body .table-container table {
     width: 100%;
+    table-layout: fixed;
     border: 5px groove #8075FF;
 }
 
-.modify-button, #add-button {
+body .table-container table thead tr th,
+body .table-container table tfoot tr th {
+    background-color: #F8F0FB;
+    color: #6320EE;
+}
+
+/* Set each columns width */
+body .table-container #id-column {
+    width: 7%;
+}
+
+body .table-container #name-column {
+    width: 38%;
+}
+
+body .table-container #author-column {
+    width: 35%;
+}
+
+body .table-container #cost-column {
+    width: 10%;
+}
+
+body .table-container #action-column {
+    width: 10%;
+}
+
+body .table-container table thead tr .column-name-button {
+    cursor: pointer;
+}
+
+.modify-button, #add-button, .change-button, .cancel-button, .remove-button {
     color: inherit;
     font-size: inherit;
     border: none;
@@ -40,56 +82,52 @@ body .table-container table {
 }
 
 .change-button, .cancel-button, .remove-button {
-    color: inherit;
     font-size: 20px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-}
-
-th 
-{
-    height: 50px;
 }
 
 body .table-container table thead tr th, 
 body .table-container table tfoot tr th {
-    border: 2px solid;
-    border-color: #6320EE;
+    border: 2px solid #6320EE;
     height: 60px;
 }
 
-body .table-container table thead > tr th {
-    width: 50px;
-}
-
-body .table-container table thead tr .column-name-button {
-    cursor: pointer;
-}
-
-.hidden {
-    display: none;
-}
-
-body .table-container table tfoot tr th input {
-    border: 2px solid;
-    border-color: #6320EE;
-    color: #6320EE;
-}
-
-body .table-container table thead tr th,
-body .table-container table tfoot tr th {
+/* Tfoot inputs */
+body .table-container table tfoot tr th label input {
     background-color: #F8F0FB;
+    border: 2px solid #6320EE;
     color: #6320EE;
+    width: 80%;
 }
 
-body .table-container table tbody tr:nth-child(2n + 1) th {
-    background-color: #6320EE;
+body .table-container table tfoot tr th label input::placeholder {
+    color: #8075FF;
+    font-weight: normal;
 }
 
-.table-container table tbody tr th .no-show {
+body .table-container table tfoot tr th label input:focus {
+    outline: none;
+    border: 3px solid #6320EE;
+    border-radius: 4px;
+    color: #6320EE;
+    font-weight: inherit;
+}
+
+/* Tbody inputs */
+tbody tr th label input {
+    border: 2px solid #F8F0FB;
+    font-weight: bold;
+    color: #F8F0FB;
+    width: 80%;
+}
+
+tbody tr th label input:focus {
+    outline: none;
+    border: 4px solid #F8F0FB;
+    border-radius: 4px;
+}
+
+.table-container table tbody tr th label .no-show {
+    /* Clear all input properties */
     outline: none;
     border: none;
     background-image:none;
@@ -97,14 +135,32 @@ body .table-container table tbody tr:nth-child(2n + 1) th {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+
+    /* Make text look like other columns */
     font-weight: inherit;
     font-size: inherit;
     font-family: inherit;
     color: inherit;
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
-body .table-container table tbody tr:nth-child(2n) {
+/* Used to properly center number without spinner interfering */
+.no-show[type='number']::-webkit-inner-spin-button,
+.no-show[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Alternating row colors */
+body .table-container table tbody tr:nth-child(2n + 1) th,
+tbody tr:nth-child(2n + 1) th label input {
+    background-color: #6320EE;
+}
+
+body .table-container table tbody tr:nth-child(2n) th,
+tbody tr:nth-child(2n) th label input {
     background-color: #8075FF;
 }
 

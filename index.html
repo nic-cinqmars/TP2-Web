@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script src="https://kit.fontawesome.com/81d92f1aa3.js" crossorigin="anonymous"></script>
         <script src="js/script.js"></script>
-        <title>Document</title>
+        <title>Librairie</title>
     </head>
     <body>
         <div class="table-container">
@@ -15,36 +15,43 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="column-name-button">
+                        <th class="column-name-button" id="id-column">
                             ID
-                            <i class="fa-solid fa-caret-down"></i>
+                            <i class="fa-solid fa-caret-up"></i>
                         </th>
-                        <th class="column-name-button">
+                        <th class="column-name-button" id="name-column">
                             Nom
                             <i class="hidden"></i>
                         </th>
-                        <th class="column-name-button">
+                        <th class="column-name-button" id="author-column">
                             Auteur
                             <i class="hidden"></i>
                         </th>
-                        <th class="column-name-button">
+                        <th class="column-name-button" id="cost-column">
                             Coût
                             <i class="hidden"></i>
                         </th>
-                        <th>Action</th>
+                        <th id="action-column">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Ids will be filled in JS (first th) -->
                     <tr>
-                        <th>1</th>
+                        <th></th>
                         <th>
-                            <input class="no-show" readonly type="text" value="Nous rêvions juste de liberté">
+                            <label>
+                                <input class="no-show" readonly type="text" value="Nous rêvions juste de liberté">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="text" value="Henri Loevenbruch">
+                            <label>
+                                <input class="no-show" readonly type="text" value="Henri Loevenbruch">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="number" value="10.25">
+                            <label>
+                                <input class="no-show" readonly type="number" value="33.33">
+                            </label>
                         </th>
                         <th>
                             <button class="modify-button">
@@ -64,43 +71,21 @@
                         </th>
                     </tr>
                     <tr>
-                        <th>2</th>
+                        <th></th>
                         <th>
-                            <input class="no-show" readonly type="text" value="Anne de Green Gables">
+                            <label>
+                                <input class="no-show" readonly type="text" value="Anne de Green Gables">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="text" value="Lucy Maud Montgomery">
+                            <label>
+                                <input class="no-show" readonly type="text" value="Lucy Maud Montgomery">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="number" value="30.50">
-                        </th>
-                        <th>
-                            <button class="modify-button">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <div class="row-edit-container hidden">
-                                <button class="change-button">
-                                    <i class="fa-solid fa-square-check"></i>
-                                </button>
-                                <button class="cancel-button">
-                                    <i class="fa-solid fa-square-xmark"></i>
-                                </button>
-                                <button class="remove-button">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </div>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <th>
-                            <input class="no-show" readonly type="text" value="Les Rois maudits">
-                        </th>
-                        <th>
-                            <input class="no-show" readonly type="text" value="Maurice Druon">
-                        </th>
-                        <th>
-                            <input class="no-show" readonly type="number" value="99.99">
+                            <label>
+                                <input class="no-show" readonly type="number" value="16.93">
+                            </label>
                         </th>
                         <th>
                             <button class="modify-button">
@@ -120,15 +105,21 @@
                         </th>
                     </tr>
                     <tr>
-                        <th>4</th>
+                        <th></th>
                         <th>
-                            <input class="no-show" readonly type="text" value="La Ligne Verte">
+                            <label>
+                                <input class="no-show" readonly type="text" value="Les Rois maudits">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="text" value="Stephen King">
+                            <label>
+                                <input class="no-show" readonly type="text" value="Maurice Druon">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="number" value="1.00">
+                            <label>
+                                <input class="no-show" readonly type="number" value="13.95">
+                            </label>
                         </th>
                         <th>
                             <button class="modify-button">
@@ -148,15 +139,1585 @@
                         </th>
                     </tr>
                     <tr>
-                        <th>5</th>
+                        <th></th>
                         <th>
-                            <input class="no-show" readonly type="text" value="La Ligne Verte">
+                            <label>
+                                <input class="no-show" readonly type="text" value="La Ligne Verte">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="text" value="Stephen King">
+                            <label>
+                                <input class="no-show" readonly type="text" value="Stephen King">
+                            </label>
                         </th>
                         <th>
-                            <input class="no-show" readonly type="number" value="1.00">
+                            <label>
+                                <input class="no-show" readonly type="number" value="14.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="L'Homme sans qualités">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Robert Musil">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="20.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Orgueil et Préjugés">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Jane Austen">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="11.99">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Père Goriot">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Honoré de Balzac">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="7.87">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="L'Étranger">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Albert Camus">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="8.90">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Voyage au bout de la nuit">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Louis-Ferdinand Céline">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="19.75">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Don Quichotte">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Miguel de Cervantes">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="30.22">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Nostromo">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Joseph Conrad">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="16.82">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Divine Comédie">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Dante Alighieri">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="18.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Les Grandes Espérances">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Charles Dickens">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="38.60">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Crime et Châtiment">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Fiodor Dostoïevski">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="14.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Middlemarch">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="George Eliot">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="10.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Médée">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Euripide">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="4.00">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="¡Absalón, Absalón!">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="William Faulkner">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="51.55">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Tambour">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Günter Grass">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="42.82">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="La Faim">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Knut Hamsun">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="12.00">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Essais">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Michel de Montaigne">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="11.50">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Procès">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Franz Kafka">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="7.60">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Moby Dick">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Herman Melville">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="19.99">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Beloved">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Toni Morrison">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="36.63">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Les Enfants de minuit">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Salman Rushdie">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="72.93">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Jardin des fruits">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Saadi">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="31.35">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Hamlet">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="William Shakespeare">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="12.99">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Guerre et Paix">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Léon Tolstoï">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="27.72">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Énéide">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Virgile">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="18.27">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Feuilles d'herbe">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Walt Whitman">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="18.65">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Mrs Dalloway">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Virginia Woolf">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="9.15">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Mémoires d'Hadrien">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Marguerite Yourcenar">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="23.27">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Roi Lear">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="William Shakespeare">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="9.99">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Les Âmes mortes">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Nicolas Gogol">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="21.18">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Vieil Homme et la Mer">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Ernest Hemingway">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="17.99">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Odyssée">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Homère">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="44.13">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Livre de Job">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Anonyme">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="17.94">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Ulysse">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="James Joyce">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="26.79">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Cents ans de solitude">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Gabriel García Márquez">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="20.79">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Romancero gitano">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Federico García Lorca">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="9.66">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le monde s'effondre">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Chinua Achebe">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="15.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Les Démons">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Fiodor Dostoïevski">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="26.73">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Fictions">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Jorge Luis Borges">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="36.63">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Les Hauts de Hurlevent">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Emily Brontë">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="35.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Château">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Franz Kafka">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="43.28">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Carnet d'or">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Doris Lessing">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="25.90">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Fifi Brindacier">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Astrid Lindgren">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="8.95">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Journal d'un fou">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Lu Xun">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="12.88">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Les Fils de la Médina">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Naguib Mahfouz">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="22.83">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Le Dit du Genji">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Murasaki Shikibu">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="189.57">
+                            </label>
+                        </th>
+                        <th>
+                            <button class="modify-button">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <div class="row-edit-container hidden">
+                                <button class="change-button">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </button>
+                                <button class="cancel-button">
+                                    <i class="fa-solid fa-square-xmark"></i>
+                                </button>
+                                <button class="remove-button">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Lolita">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="text" value="Vladimir Nabokov">
+                            </label>
+                        </th>
+                        <th>
+                            <label>
+                                <input class="no-show" readonly type="number" value="52.84">
+                            </label>
                         </th>
                         <th>
                             <button class="modify-button">
@@ -180,13 +1741,19 @@
                     <tr>
                         <th></th>
                         <th>
-                            <input type="text" placeholder="Livre">
+                            <label>
+                                <input type="text" placeholder="Livre">
+                            </label>
                         </th>
                         <th>
-                            <input type="text" placeholder="Auteur">
+                            <label>
+                                <input type="text" placeholder="Auteur">
+                            </label>
                         </th>
                         <th>
-                            <input type="number" placeholder="0.00">
+                            <label>
+                                <input type="number" placeholder="0.00">
+                            </label>
                         </th>
                         <th>
                             <button id="add-button">
