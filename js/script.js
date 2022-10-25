@@ -34,7 +34,7 @@ function initialize()
         id++;
     })
 
-    // Set next id for new row
+    // Set next id for new row //
     setNewRowID();
 
     document.querySelectorAll("table tbody tr th .modify-button").forEach(btn => addRowEditorListeners(btn.parentNode));
