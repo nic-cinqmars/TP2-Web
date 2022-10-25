@@ -17,7 +17,7 @@ th
     height: 50px;
 }
 
-/* Used to hide sort icons on top of columns */
+/* Used to hide sort icons on top row columns */
 .hidden {
     display: none;
 }

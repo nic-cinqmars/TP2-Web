@@ -1,8 +1,13 @@
 const upIcon = "fa-solid fa-caret-up";
 const downIcon = "fa-solid fa-caret-down";
 
+const maxRowsPerPage = 20;
+
+let tbodies;
+let pageCount = 1;
+
 let theadCells;
-let tbody;
+let initialTbody;
 let tfootCells;
 
 let defaultRow;
@@ -19,9 +24,9 @@ function initialize()
     theadCells = document.querySelectorAll("table thead tr .column-name-button");
     theadCells.forEach(btn => btn.addEventListener("click", theadCellClicked, false));
 
-    tbody = document.querySelector("table tbody");
+    initialTbody = document.querySelector("table tbody");
 
-    defaultRow = tbody.rows[0].cloneNode(true);
+    defaultRow = initialTbody.rows[0].cloneNode(true);
     defaultRow.querySelector("th").innerText = "-1";
     defaultRow.querySelectorAll("th label input").forEach(input => input.value = 0);
 
@@ -29,20 +34,42 @@ function initialize()
 
     // Fill ids
     let id = 1;
-    tbody.querySelectorAll("tr").forEach(row => {
+    initialTbody.querySelectorAll("tr").forEach(row => {
         row.children[0].innerText = id;
         id++;
     })
 
-    // Set next id for new row //
+    // Set next id for new row
     setNewRowID();
 
     document.querySelectorAll("table tbody tr th .modify-button").forEach(btn => addRowEditorListeners(btn.parentNode));
 
     document.querySelector("#add-button").addEventListener("click", addBtnClicked, false);
 
+    initializePages();
     currentModifyRow = undefined;
     modifiedRowOldValues = [];
+}
+
+function initializePages()
+{
+    tbodies = [];
+    let currentTbody;
+    let bodyRows = Array.from(initialTbody.rows);
+    for (let i = 0; i < bodyRows.length; i++)
+    {
+        if (i % maxRowsPerPage === 0)
+        {
+            currentTbody = document.createElement("tbody");
+            currentTbody.id = "page-" + (i/maxRowsPerPage);
+            tbodies.push(currentTbody)
+        }
+        currentTbody.appendChild(bodyRows[i]);
+    }
+
+    let table = document.querySelector("table");
+    table.removeChild(initialTbody);
+    tbodies.forEach(tbody => table.appendChild(tbody));
 }
 
 function addRowEditorListeners(element)
@@ -125,7 +152,7 @@ function cancelBtnClicked(event) {
 
 function removeBtnClicked(event) {
     let row = event.currentTarget.closest("tr");
-    tbody.removeChild(row);
+    initialTbody.removeChild(row);
 
     // Set next id for new row as ids have changed
     setNewRowID();
@@ -163,7 +190,9 @@ function theadCellClicked(event)
 
 function sortRows()
 {
-    let columnBodyRows = Array.from(tbody.rows);
+    let columnBodyRows = [];
+    tbodies.forEach(tbody => columnBodyRows = columnBodyRows.concat(Array.from(tbody.rows)))
+    console.debug(columnBodyRows);
 
     switch (theadCells[columnIndexToSortFrom].children[0].className)
     {
@@ -208,15 +237,15 @@ function sortRows()
     }
 
     //Clear current tbody rows
-    while (tbody.firstChild)
+    while (initialTbody.firstChild)
     {
-        tbody.removeChild(tbody.lastChild);
+        initialTbody.removeChild(initialTbody.lastChild);
     }
 
     //Add sorted rows
     for (let i = 0; i < columnBodyRows.length; i++)
     {
-        tbody.appendChild(columnBodyRows[i]);
+        initialTbody.appendChild(columnBodyRows[i]);
     }
 }
 
@@ -240,7 +269,7 @@ function addBtnClicked() {
         tfootCells[i].children[0].value = "";
     }
 
-    tbody.appendChild(newRow);
+    initialTbody.appendChild(newRow);
 
     // Add listeners to new row
     addRowEditorListeners(newRow);
@@ -254,7 +283,7 @@ function addBtnClicked() {
 
 // Sets the lowest available id to tfoot id column
 function setNewRowID() {
-    let bodyRows = Array.from(tbody.rows);
+    let bodyRows = Array.from(initialTbody.rows);
     let ids = [];
     bodyRows.forEach(row => {
         ids.push(parseInt(row.children[0].innerText));
