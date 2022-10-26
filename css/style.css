@@ -21,6 +21,10 @@ th
     height: 50px;
 }
 
+button:hover {
+    transform: scale(1.1);
+}
+
 /* Used to hide sort icons on top row columns */
 .hidden {
     display: none;
@@ -138,7 +142,8 @@ body #table-container table tfoot tr th label input::placeholder {
     font-weight: normal;
 }
 
-body #table-container table tfoot tr th label input:focus {
+body #table-container table tfoot tr th label input:focus,
+body #table-container .page-selector #rows-per-page-input:focus {
     outline: none;
     border: 3px solid #6320EE;
     border-radius: 4px;
